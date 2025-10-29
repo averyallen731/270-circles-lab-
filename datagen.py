@@ -17,11 +17,23 @@ def generate_data(response_fn, N):
 
 
 def compute_linear_response(x):
-    pass  #TODO: replace with an implementation
-
+    parameter_vector = torch.tensor([0.5, 0.8, -0.4])
+    result = x @ parameter_vector.t()
+    if result < -0.1:
+        return 0
+    elif result > 0.1:
+        return 1
+    else:
+        return None
 
 def compute_nonlinear_response(x):
-    pass  #TODO: replace with an implementation
+    value = x[1]**2 + x[2]**3
+    if value < 1.25:
+        return 1
+    elif value > 1.75:
+        return 0
+    else:
+        return None
 
 
 def visualize(data):

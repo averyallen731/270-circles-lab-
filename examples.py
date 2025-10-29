@@ -29,9 +29,9 @@ def compute_gradients_for_example1():
     g = ExampleFunctionGraph1()
     u = torch.tensor(3.0, requires_grad=True)
     v = torch.tensor(4.0, requires_grad=True)
-    y = g(u, v)
-    y.backward()
-    print(f"y = {y}")
+    z = g(u, v)
+    z.backward()
+    print(f"y = {z}")
     print(f"dy/du = {u.grad}")
     print(f"dy/dv = {v.grad}")
 
@@ -63,4 +63,9 @@ def optimize_example2(num_iters):
     print(f"final parameters: {model.theta}")
 
 if __name__ == "__main__":
-    optimize_example2()
+    print("Example 1: Computing gradients")
+    compute_gradients_for_example1()
+    print("\nExample 2: Computing gradients")
+    compute_gradients_for_example2()
+    print("\nExample 2: Optimizing parameters")
+    optimize_example2(num_iters=10)
